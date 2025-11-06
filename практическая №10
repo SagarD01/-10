@@ -1,0 +1,46 @@
+# include<iostream>
+# include<ctime>
+using namespace std;
+
+int main() {
+
+	setlocale(0, "");
+	srand(time(NULL));
+
+	int a; // Выбор действия
+	int b; // Ввод числа которое угадывает пользователь
+	int c; // Ввод количества 
+	int d; // Рандомное число
+	int kol=0; //Количество верных ответов
+	int life =5; //количество попыток
+
+
+	cout << "Выберите действие: (1) Начать игру, (0) Выйти:";
+	cin >> a;
+
+	if (a == 1) {
+		while (a==1) {
+			cout << "У вас "<<life<< " попыток" << endl;
+			cout << "Введите количество чисел в игре:";
+			cin >> c;
+			d = rand() % c;
+			cout << "Угадайте число:";
+			cin >> b;
+			cout << d<<endl;
+			if (b == d) {
+				cout << "Вы угадали число!";
+				kol = kol + 1;
+
+			}
+			else(b != d); {
+				cout << "Вы не угадали число"<<endl;
+				life = life - 1;
+			}
+		}
+	}
+
+	else(a == 0); {
+		cout << "Вы вышли";
+	}
+
+}
