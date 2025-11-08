@@ -1,5 +1,5 @@
 # include<iostream>
-# include<ctime>
+# include<ctime>//нужно для создания рандомного числа
 using namespace std;
 
 int main() {
@@ -8,50 +8,61 @@ int main() {
 	srand(time(NULL));
 
 	int a; // Выбор действия
-	int kol = 0;// верные ответы
+	int kol = 0;// количество рандомных чисел
+	int l=0;// верные ответы
 	int life = 5;// 5 жизней
 	int num;//число которое вводит пользователь для отгадки числа
 	int r;//рандом число
-	int r2;//рандом число 2 
-	int r3;//рандом число 3 
-	r = (rand() % 10) + 1;
-	r2 = (rand() % 10) + 1;
-	r3 = (rand() % 10) + 1;
+	r = (rand() % 10) + 1;//создание рандомного числа
 
 
 	cout << "Выберите действие: (1) Начать игру, (2) Выйти:";
 	cin >> a;
 	
 	switch (a == 1) {
+	    
 	case 1:
-		while (life > 0) {
+	
+		while (kol <=3) {
+		    
 			r = (rand() % 10) + 1;
-			r2 = (rand() % 10) + 1;
-			r3 = (rand() % 10) + 1;
+			
 			cout << "угадай число от 1 до 10: ";
 			cin >> num;
 			cout << r<<endl;
+			
 			if (num == r) {
 				cout << "Вы угадали число"<<endl;
-				kol++;
+				l++;
 			}
-			else if (kol == 3) {
-				cout << "Вы отгадали все числа";
-				return 0;
-			}
-			else if (num != r) {
+			
+			kol++;
+			
+			if (num != r) {
 				life--;
 			}
-			else if(life==0) {
+			
+			if(life==0) {
 				cout << "Вы проиграли(";
 				return 0;
 			}
+			
+			if (kol==3){
+			    
+			    cout<<"ваши попытки "<<kol<<endl;
+			    cout<<"верные ответы "<< l<<"/"<<3 <<endl;
+			    cout<<"Количество жизней "<<life;
+			    return 0;
+			    
+			}
+			
 		}
-	break;
+	   break;
+	
 	case 2:
+	
 		cout << "Вы вышли из игры";
 		return 0;
+		
 	break;
 	}
-
-}
